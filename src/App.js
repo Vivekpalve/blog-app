@@ -8,11 +8,15 @@ import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import Services from "./pages/Services";
 import { ToastContainer } from "react-toastify";
+import Privateroute from "./components/Privateroute";
+import UserDashboard from "./pages/user-private-routes/UserDashboard";
+import ProfileInfo from "./pages/user-private-routes/ProfileInfo";
+import PostPage from "./pages/PostPage";
 function App() {
   return (
     <div className="App">
       <Router>
-        <ToastContainer position="top-center"/>
+        <ToastContainer position="top-center" />
         <Routes>
           <Route
             path="/"
@@ -62,6 +66,19 @@ function App() {
               </>
             }
           />
+          <Route
+            path="/post"
+            element={
+              <>
+                <PostPage />
+              </>
+            }
+          />
+
+          <Route path="/user" element={<Privateroute />}>
+            <Route path="dashboard" element={<UserDashboard />} />
+            <Route path="profile" element={<ProfileInfo />} />
+          </Route>
         </Routes>
       </Router>
     </div>
