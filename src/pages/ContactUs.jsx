@@ -4,8 +4,9 @@ import Base from "../components/Base";
 const ContactUs = () => {
   return (
     <div>
-      <Base></Base>
-      <h1>This is ContactUs Page</h1>
+      <Base>
+        <h1>This is ContactUs Page</h1>
+      </Base>
     </div>
   );
 };

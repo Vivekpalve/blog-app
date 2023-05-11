@@ -13,9 +13,11 @@ import { toast } from "react-toastify";
 import { loginUser } from "../../services/User_service";
 import { doLogin } from "../../auth";
 import { useNavigate } from "react-router-dom";
+import userContext from "../../context/UserContext";
 
 export function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);
+  const userContextData = useContext(userContext);
 
   const navigate = useNavigate();
 
@@ -59,6 +61,10 @@ export function LoginForm(props) {
           console.log("Login detail is saved to localStorage");
 
           //redirect to user dashboard page
+          userContextData.setUser({
+            data: data,
+            login: true,
+          });
           navigate("/user/dashboard");
         });
 

@@ -15,7 +15,11 @@ import {
 } from "reactstrap";
 import { doLogout, getCurrentUserDetails, isLoggedIn } from "../auth";
 import "./CustomNavbar.css";
+import userContext from "../context/UserContext";
+import { useContext } from "react";
 const CustomNavbar = () => {
+  const userContextData = useContext(userContext);
+
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +35,12 @@ const CustomNavbar = () => {
 
   const logout = () => {
     doLogout(() => {
+      //logged out
       setLogin(false);
+      userContextData.setUser({
+        data: null,
+        login: true,
+      });
       navigate("/");
     });
   };

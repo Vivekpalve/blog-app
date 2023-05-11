@@ -3,7 +3,7 @@
   top: 0;
   right: 0;
   width: calc(
-    40% - 30px
+    40% - 0px
   ); /* Adjust the width and margin from the right to match the vertical line */
   margin-right: 30px;
 }
@@ -33,6 +33,65 @@ h4 {
 }
 
 .square-card .btt {
+  display: block;
+  color: #fff;
+  margin-top: 35px; /* Add some margin below the content */
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 400;
+  /* margin-top: 30px; */
+  /* margin-left: 25%; */
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(10, 6, 68);
+  background: linear-gradient(
+    90deg,
+    rgba(10, 6, 68, 1) 0%,
+    rgba(7, 7, 13, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+/* .extra-cards */
+.extra-card-containers {
+  position: absolute!important;
+  top: 0!important;
+  right: 0!important;
+  width: calc(
+    40% - 30px
+  )!important; /* Adjust the width and margin from the right to match the vertical line */
+  margin-right: 30px!important;
+}
+
+.extra-cards {
+  /* background-color: #fff; */
+  border-radius: 10px!important;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
+  padding: 20px!important;
+  margin-bottom: 20px!important;
+}
+.square-cards {
+  background-color: #fff !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
+  padding: 20px !important;
+
+  margin-top: 75% !important; /* Add some margin to separate the square card from the other cards */
+  height: 50% !important;
+  width: calc(
+    60% - 50px
+  ) !important; /* Subtract 50px for the vertical line and margin */
+  margin-left: 48% !important; /* Add a 10% margin from the left */
+}
+
+h4 {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.square-cards .btt {
   display: block;
   color: #fff;
   margin-top: 35px; /* Add some margin below the content */

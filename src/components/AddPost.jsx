@@ -4,7 +4,10 @@ import "../components/AddPost.css";
 import { loadAllCategories } from "../services/Category_service";
 import JoditEditor from "jodit-react";
 import { toast } from "react-toastify";
-import { createPost as doCreatePost } from "../services/Post_service";
+import {
+  createPost as doCreatePost,
+  uploadPostImage,
+} from "../services/Post_service";
 import { getCurrentUserDetails } from "../auth";
 // import getCurrentUser
 const AddPost = () => {
@@ -18,6 +21,7 @@ const AddPost = () => {
     categoryId: "",
   });
 
+  const [image, setImage] = useState(null);
   useEffect(() => {
     setUser(getCurrentUserDetails());
     loadAllCategories()
@@ -59,6 +63,14 @@ const AddPost = () => {
     post["userId"] = user.userId;
     doCreatePost(post)
       .then((data) => {
+        uploadPostImage(image, data.postId)
+          .then((data) => {
+            toast.success("Image uploaded!!");
+          })
+          .catch((error) => {
+            toast.error("error in uploading image");
+            console.log(error);
+          });
         toast.success("Post created!!");
         // console.log(post);
         setPost({
@@ -71,6 +83,12 @@ const AddPost = () => {
         toast.error("Something Went Wrong!!");
         // console.log(error);
       });
+  };
+
+  //handling file change event
+  const handleFileChange = (event) => {
+    console.log(event.target.files[0]);
+    setImage(event.target.files[0]);
   };
 
   return (
@@ -107,6 +125,16 @@ const AddPost = () => {
                 </option>
               ))}
             </Input>
+          </div>
+          {/* file field */}
+          <div className="mt-3">
+            <Label for="image">Select post image</Label>
+            <Input
+              id="image"
+              type="file"
+              onChange={handleFileChange}
+              accept="images/*"
+            />
           </div>
           <div className="input-box">
             <Label>Post Content</Label>
