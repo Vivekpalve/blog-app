@@ -11,7 +11,6 @@ import {
 } from "./common";
 import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
-import { FormFeedback, FormGroup } from "reactstrap";
 
 export function SignupForm(props) {
   const { switchToSignin } = useContext(AccountContext);
@@ -45,6 +44,31 @@ export function SignupForm(props) {
     //     ...error,isError:false})
     //   return;
     // }
+    if (
+      data.name.trim() === "" &&
+      data.email.trim() === "" &&
+      data.password.trim() === "" &&
+      data.about.trim() === ""
+    ) {
+      toast.success("All fields are required !!");
+      return;
+    } 
+    if (data.name.trim() === "") {
+      toast.success("UserName is required !!");
+      return;
+    }
+    if (data.email.trim() === "") {
+      toast.success("Email is required !!");
+      return;
+    }
+    if (data.password.trim() === "") {
+      toast.success("Password is required !!");
+      return;
+    }
+    if (data.about.trim() === "") {
+      toast.success("About is required !!");
+      return;
+    }
 
     //call server api for sending data
     signUp(data)

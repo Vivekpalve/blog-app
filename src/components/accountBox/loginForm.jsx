@@ -11,9 +11,15 @@ import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
 import { toast } from "react-toastify";
 import { loginUser } from "../../services/User_service";
+import { doLogin } from "../../auth";
+import { useNavigate } from "react-router-dom";
+import userContext from "../../context/UserContext";
 
 export function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);
+  const userContextData = useContext(userContext);
+
+  const navigate = useNavigate();
 
   const [loginDetail, setLoginDetail] = useState({
     username: "",
@@ -47,9 +53,21 @@ export function LoginForm(props) {
 
     //submit the data to server to generate  token
     loginUser(loginDetail)
-      .then((jwtTokenData) => {
-        console.log("uesr login: ");
-        console.log(jwtTokenData);
+      .then((data) => {
+        console.log(data);
+
+        //save the data to localStorage
+        doLogin(data, () => {
+          console.log("Login detail is saved to localStorage");
+
+          //redirect to user dashboard page
+          userContextData.setUser({
+            data: data,
+            login: true,
+          });
+          navigate("/user/dashboard");
+        });
+
         toast.success("User sign-in sucessfully !!");
       })
       .catch((error) => {
@@ -61,6 +79,7 @@ export function LoginForm(props) {
         }
       });
   };
+
   return (
     <form onSubmit={handleFormSubmit}>
       <BoxContainer>
