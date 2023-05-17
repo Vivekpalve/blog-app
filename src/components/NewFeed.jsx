@@ -68,15 +68,16 @@ const NewFeed = () => {
       .then((data) => {
         console.log(data);
         toast.success("Post is Deleted!!");
-        let newPostContent=postContent.content.filter(p=>p.postId!=post.postId)
-        setPostcontent({...postContent,content:newPostContent})
+        let newPostContent = postContent.content.filter(
+          (p) => p.postId != post.postId
+        );
+        setPostcontent({ ...postContent, content: newPostContent });
       })
       .catch((error) => {
         console.log(error);
         toast.error("error in deleteing post!!");
       });
   };
-
 
   const changePageInfinite = () => {
     console.log("page changed!!");

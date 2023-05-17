@@ -1,39 +1,137 @@
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  /* Change favorite color */
+  --hue-color: 23; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+
+  /* HSL color mode */
+  --first-color: hsl(var(--hue-color), 95%, 53%);
+  --first-color-second: hsl(var(--hue-color), 96%, 61%);
+  --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+  --first-color-lighter: hsl(var(--hue-color), 6%, 48%);
+  --title-color: hsl(var(--hue-color), 8%, 15%);
+  --text-color: hsl(var(--hue-color), 8%, 45%);
+  --text-color-light: hsl(var(--hue-color), 8%, 65%);
+  --input-color: hsl(var(--hue-color), 70%, 96%);
+  --body-color: hsl(var(--hue-color), 60%, 99%);
+  --container-color: #fff;
+  --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+
+  /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes Bottom ==========*/
+  /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
 }
-/* .app {
+/*==================== SERVICES ====================*/
+/* .services {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALUAAAEWCAMAAAAXciZvAAAAk1BMVEUAAAL///8AAAEBAQP8/PwuLi////0BAAX5+fkFBQXz8/P19fXu7u7n5+dLS0v8/PpUVFSgoKDe3t5eXl7CwsI9PT0jIyMbGxuSkpKJiYlycnJtbW28vLypqalYWFjp6el/f3/S0tIPDw+NjY0zMzMcHBzIyMivr69lZWXZ2dmkpKMoKCgODg2ZmZnOz812eHdDQ0M6m5paAAAKTElEQVR4nNWd63IbNwyFF1xK4uqyukuR5FgX27rYlu33f7oCJFeSmzadSQnNHnQaT/7U36BnSRAAwYx07HPWULRMiXplNE2L+sfMFFlmcihqS50nk+V5bvJcftxYir9qUDfZHB0EuCiEPGOvZ0n/UKP+5P+TRV5RJzYt6ub2/bFkbUNR912z59ZLIzIRq79CBNw2LX+SB6EO30/tfR3NdljbRWYyBWw9anJuYK6LVlZ/hQRbl35PAPM1uc/pchCwYajJ2maf4icpvwtCIbyK9PvObi/UGL721DRBoyZRyINf++R3QSjEm2VfZ2C+FtvDKUTWkVEBR23tja9hdO1s+BrTulqZ2pIbjU36EFubejiXYy9GfH2x9sAURfrDjB6wtY5GU/4UkzPrxiGWfrKnC4wzemWO9l8mLwzGaTcau/p1rrCbK1NTezs2rVZLfg2IQqy1nfbM5JEaw9e8vRB97HIDRc02edzxBgOkEA6qjzMTl2qFJUSDmhePns8yqywfatRE3Z3xWXf5DRp/KFCLsyUPrORnJV8L9QNv5VgKEXs1RZVyQlEI29kYNF+zQuw5hCBK4tagllwZKzvn7bxarWuuECt7ufVH80hd/x2dl2rquu66Pdw8w1CzhzfjWeNl/ubLdp7a1D4OsfSjKhrzznhd9+rta8Y++hq0ryApbo5pqZ0ve+VZ3GFg4pBDiD8Uaox6viYWNh/KC4UCkir1Rr5EE9NNIAqRcznv5Qo5su+Wllq2Rpq8+IQkDDXv5myjqWgb5VTA0ce2LAflThLWnhpB16yOTSycA+naOl738rxotfyq18LYG5lagmpJ3HgzCAppNpu0nZks9DqhfI1NKT9PTK69myentm49D00sMHujKIRoW17/+3qWjtqbk5zCu2oGR4PadWXNfs+g4muJQ/aLsUKbgqavY2LhKHlgjF3mhrw7fjdgeT5JitBCrbNWydfC3X2Gy04K9/aryk5iKESSfFKaeTc32cl6+1qyqVaMI5IWRp5PFmsbfhCtjcHI89n4ozs5vw6Hkbr+vqbOZ1mWX0U8h13cU2tqF8+NcYOBOMvEMmNx6W9X8XJiX1ufwDEqrTdK1HyO6Uvc1JvF8yLEWcZfkOGfHy9G/cyYJaO2zQ59fJ4377yN3wE6la/7zW5YPIqb22p1V0i/6Zpf0rt3h6xCloraB0xjSYXcYwFJR02HR5aH+X52qblCrHXPUhW9z6eYjJq2oc/pTgJJ5evTTnx9L1cnopa4qaIG0rX0LMP5moYvRrl0np6aTib2lFWGoBAayu2Bb/fddS0N9elyZxSJmo5/o0ZQiCVZrzMwX/PKN/jmagxqcn+jxlDIIfZbA/maBdLurYKzde4RaFD7U8E5dvC1WjAnMD7KON87lEVqZUtDLdkyu9+8GQNFHXLAvWVcSTAUEsz5xnzlUqO3hNDi7IG5S5ydFJo/yuHctLAUYkUkvekdJJKSWsBttwFIHceFAClEqF2p3VmbKVCP5oDU9FOCv2qDBFEIB38LX2dU3tbTUkvJcQVHbZ3kzpg6//3/5ey//5r97q/piNunUbdNFD/Hf/kgv5/T/tQSUv80u1m5eD3vgKj5wHusytGX8syv4qgZtdQLjuEmhB+AiOFr4T7xCaz4v/3Ad6a2NAxpMyhqXkW2G5MVoTsk6OEP/rg7NR8KFpdBrX/q7vtTW0unyeSRD4/VwNY/RP8vS0otZxmi09SPWKio6x89ka+H9fdPb3GJUwpHklN7bnqNA4J1oLU6Ppcwd5NuzM1Rbp58o97p3hbUobbjOaBCyPXkrF6AfY3hijcatTS7S3NOhqUQ+mHGM45GdL5JLWpnR7SfGl9bSr/bKFGLdWjlR2tdwqjaK4QkAlw3hFoj+FOkpn0h1C0oaqLJzlQxq/9dCArhdWRUlqupUWgTVqTmiFXOCRuFPmFNapnyKdc0sxxkl/HUzN23zQ2WQuSJCP5ngzWN3r9sEan974JQSKBmXQP6mn4qNAsrUlPV7pIjrSHkyzT0ibWGeOzuQeMKjTK0e1QpUCsiy4YuARRYzOd8Hh6M2knTbRH7V+V3QSiE3ArsVRy5wmvdk/l/NZp7U3vw048XncSCqq8f1NLBitRuoZYN1iCWG7zt3tM0pswwqBm7fS4lFVzgTIcIN5VMuIOnlFTVoZ741zf0mrZ0qN2LVDiMgak3Btsg1mVobFSnOOpA2xKr3ii3pflHd6kqkdTU1YwZVrYedOIZn9LPFwbM8CEXSCHUPY222+14gPQ1Lso3s4sTsEF0zdqoXr1OfeRSVIjMpmpc7znquTp131N7er1TikMt7SyS1QvUEApha5ccoYa4WtPSU4fIGoqa1tvldXojikKkn++s87bdrSUklo+x3W6vX3dqp1wFankaYjd72YVVRAxBIdZ1ZnFfxFGIjYcBo9fupEAtdfOVf6/x0seMoJCYZdee+p+lpZYjwUL/hYXU1GyTmLAGUogfSDqPPcwwMR+JtI8Sh6BN7abtUacUo0gtFWh32FSz3SF0zdbvuz5R71nWbZwO/T6bs/LQruqEwbTQ0nvjh33K+9EZys0TaWRphvcbDc7rfBU1Y880b3inpfYm2clOeIIeqJoUkpRHsDdgg01gdM2rR8e53sd5uXl6NCBriKP9tPH2Nr8dgl17X/vZITeGcufOPceZiLIvgrxoEdLXvJPLFYjYma/j6nTUHH20aeJrBP64C3Hnzj/R0l1UhQ2UE5g7Py5K46v++pYG2Q+iN1EeKNQSeYx+LSHVXCFSGO0V6vnfq6Wh5u+woZ7+TU5tt9eqKIpCrPMjd5VzILeWiPqg/1ptcmrrOl//8JJWzRVCvmUIzdf93uN93t9ISk1nkfUvGbJ6K0SmBBfqVehbSwLd9INrwaiJurNr8hdFIfYyNAlpDeFtZoRHzb7e396FRqF2xzCz9nsDTr11LZHq6Nmo15CuloRacr+D+7xqnJSaaDSI2SYYhZAMsHAPEkEZ/YaFhNR+NtWphHoxLnDLwJACSiEk81noowTKh3jzXe4dtQtrStSRfOL74nAUQv6TfNDv5lOYE7y6x7OCianloZkMTiHywtYdopHE1PYISO3DkWt1FEIhfsWWkBXH15LDdh1r10jUcjDoSff18HpvrfYK8T2qZvb1dFjeI3eWiJocrRvV0G4ghbBESqnb+S4tEIXIOV1S7wVWT3C84VMYvavzKtRE3f2qatAPy0jtFRLA20tf4C38BSVFlyek9h0Ap+1k6pPZOQ61v/w6aVQXHBEUQiES4SVw8jTXXUrSUgd0/lcuc4BR81H9C+sWvcemnu5lYyVf95TvzehQtx+NP4lBUUtiuBEmwOLoWvpVrRxpkGYQ+bXvdL1Lj0Ith4SVWfkQEEchXttrOrxprX9K1I6x+3GvwaGWs03zZC4z4zAU4ke2vMpMQZVCjRa1f8oxdL0rjAJQpLa0L1eb6bV2UH+FBOw2hyRjrHmqciPWOquRjFKkDuTh5XQchQQL1Fi+JgtILco+oimk2e/3aZH+a/wLSDjHqdfCQvcAAAAASUVORK5CYII=");
   background-repeat: no-repeat;
   background-size: cover;
 } */
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.services__container {
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.services__content {
+  position: relative;
+  margin: 10px;
+  background-color: var(--container-color);
+  padding: 3.5rem 0.5rem 1.25rem 1.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+}
+.services__content:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.services__icon {
+  display: block;
+  color: var(--first-color);
+  margin-bottom: var(--mb-1);
+}
+.services__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-1);
+  font-weight: var(--font-medium);
+}
+.services__button {
+  cursor: pointer;
+  font-size: var(--small-font-size);
+}
+.services__button:hover .button__icon {
+  transform: translateX(0.25rem);
+}
+.services__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.15);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0 1rem;
+  z-index: var(--z-modal);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
 }
-
-.App-link {
-  color: #61dafb;
+.services__modal-content {
+  position: relative;
+  background-color: var(--container-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.services__modal-services {
+  row-gap: 1rem;
+}
+.services__modal-service {
+  display: flex;
+}
+.services__modal-title {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--mb-1-5);
+}
+.services__modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: var(--first-color);
+  cursor: pointer;
+}
+.services__modal-icon {
+  color: var(--first-color);
+  margin-right: var(--mb-0-25);
 }

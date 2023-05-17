@@ -41,12 +41,19 @@ const CustomNavbar = () => {
         data: null,
         login: true,
       });
+
       navigate("/");
+      window.location.reload();
     });
   };
   return (
-    <div className="navd-bar">
-      <Navbar color="dark" expand="md" dark className="px-6">
+    <div className="navd-bar ">
+      <Navbar
+        color="dark"
+        expand="md"
+        dark
+        className="px-6 fixed-top navbar-expand-lg"
+      >
         <NavbarBrand tag={ReactLink} to="/">
           MyBlog
         </NavbarBrand>
@@ -119,7 +126,7 @@ const CustomNavbar = () => {
                     <DropdownItem
                       className="logout"
                       tag={ReactLink}
-                      to="/user/profile"
+                      to={`/user/profile/${user.userId}/${user.name}`}
                     >
                       profile
                     </DropdownItem>

@@ -32,7 +32,17 @@ const Post = ({ post, deletePost }) => {
         </CardText>
         <CardText dangerouslySetInnerHTML={{ __html: content }} />
         <div>
-          <Link className="btn btn-secondary" to={"/posts/" + post.postId}>
+          <Link
+            className="btn btn-secondary"
+            to={
+              "/posts/" +
+              post.title +
+              "/" +
+              post.category.categoryTitle +
+              "/" +
+              post.postId
+            }
+          >
             Read More
           </Link>
           {userContextData.user.login ? (
@@ -43,6 +53,22 @@ const Post = ({ post, deletePost }) => {
                 className="ms-2"
               >
                 Delete
+              </Button>
+            ) : (
+              ""
+            )
+          ) : (
+            ""
+          )}
+          {userContextData.user.login ? (
+            user && user.userId === post.user.userId ? (
+              <Button
+                tag={Link}
+                to={`/user/updatepost/${post.postId}`}
+                color="warning"
+                className="ms-2"
+              >
+                Update
               </Button>
             ) : (
               ""

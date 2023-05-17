@@ -14,6 +14,7 @@ import { loginUser } from "../../services/User_service";
 import { doLogin } from "../../auth";
 import { useNavigate } from "react-router-dom";
 import userContext from "../../context/UserContext";
+import "../accountBox/common.css";
 
 export function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);

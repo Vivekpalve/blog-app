@@ -1,4 +1,8 @@
-.extra-card-container {
+.mm {
+  margin-top: 8% !important;
+}
+
+.extra-card-containers {
   position: absolute;
   top: 0;
   right: 0;
@@ -14,6 +18,7 @@
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
   padding: 20px;
   margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .square-card {
   background-color: #fff;
@@ -32,9 +37,10 @@ h4 {
   margin-top: 15px;
 }
 
-.square-card .btt {
+.square-card .bttn {
   display: block;
   color: #fff;
+  cursor: pointer !important;
   margin-top: 35px; /* Add some margin below the content */
   font-size: 1rem;
   text-align: center;
@@ -56,21 +62,21 @@ h4 {
 }
 /* .extra-cards */
 .extra-card-containers {
-  position: absolute!important;
-  top: 0!important;
-  right: 0!important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
   width: calc(
     40% - 30px
-  )!important; /* Adjust the width and margin from the right to match the vertical line */
-  margin-right: 30px!important;
+  ) !important; /* Adjust the width and margin from the right to match the vertical line */
+  margin-right: 30px !important;
 }
 
 .extra-cards {
   /* background-color: #fff; */
-  border-radius: 10px!important;
+  border-radius: 10px !important;
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
-  padding: 20px!important;
-  margin-bottom: 20px!important;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
 }
 .square-cards {
   background-color: #fff !important;
@@ -91,7 +97,7 @@ h4 {
   margin-top: 15px;
 }
 
-.square-cards .btt {
+.square-cards .btts {
   display: block;
   color: #fff;
   margin-top: 35px; /* Add some margin below the content */

@@ -147,7 +147,7 @@ const AddPost = () => {
             <JoditEditor
               ref={editor}
               value={post.content}
-              onChange={contentfieldChanged}
+              onChange={(newContent)=> contentfieldChanged(newContent)}
             />
           </div>
           <Button type="submit">Create post</Button>

@@ -14,10 +14,11 @@ import ProfileInfo from "./pages/user-private-routes/ProfileInfo";
 import PostPage from "./pages/PostPage";
 import UserProvider from "./context/UserProvider";
 import Categories from "./pages/Categories";
+import UpdatePost from "./pages/UpdatePost";
 function App() {
   return (
     <UserProvider>
-      <div className="App">
+      <div className="app">
         <Router>
           <ToastContainer position="top-center" />
           <Routes>
@@ -70,7 +71,7 @@ function App() {
               }
             />
             <Route
-              path="/posts/:postId"
+              path="/posts/:title/:categoryTitle/:postId"
               element={
                 <>
                   <PostPage />
@@ -88,7 +89,8 @@ function App() {
 
             <Route path="/user" element={<Privateroute />}>
               <Route path="dashboard" element={<UserDashboard />} />
-              <Route path="profile" element={<ProfileInfo />} />
+              <Route path="profile/:userId/:name" element={<ProfileInfo />} />
+              <Route path="updatepost/:postIdd" element={<UpdatePost />} />
             </Route>
           </Routes>
         </Router>

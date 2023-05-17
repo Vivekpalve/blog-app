@@ -5,7 +5,6 @@ export const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
 `;
 
 export const FormContainer = styled.form`
@@ -64,12 +63,11 @@ export const SubmitButton = styled.button`
   border-radius: 100px 100px 100px 100px;
   cursor: pointer;
   transition: all, 240ms ease-in-out;
-  background: rgb(1, 1, 4);
+  background: rgb(71, 71, 71);
   background: linear-gradient(
     90deg,
-    rgba(1, 1, 4, 1) 100%,
-    rgba(9, 9, 121, 1) 100%,
-    rgba(0, 212, 255, 1) 100%
+    rgba(71, 71, 71, 1) 49%,
+    rgba(7, 7, 13, 1) 91%
   );
 
   &:hover {

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { signUp } from "../../services/User_service";
 import { toast } from "react-toastify";
+import "../accountBox/common.css";
 import {
   BoldLink,
   BoxContainer,
@@ -52,7 +53,7 @@ export function SignupForm(props) {
     ) {
       toast.success("All fields are required !!");
       return;
-    } 
+    }
     if (data.name.trim() === "") {
       toast.success("UserName is required !!");
       return;

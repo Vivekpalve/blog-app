@@ -1,11 +1,16 @@
 import { myAxios } from "./Helper";
 
-export const signUp = (user) => {
-  return myAxios.post("/auth/register", user).then((response) => response.data);
+export const signUp = async (user) => {
+  const response = await myAxios.post("/auth/register", user);
+  return response.data;
 };
 
-export const loginUser = (loginDetail) => {
-  return myAxios
-    .post("/auth/login", loginDetail)
-    .then((response) => response.data);
+export const loginUser = async (loginDetail) => {
+  const response = await myAxios.post("/auth/login", loginDetail);
+  return response.data;
+};
+
+export const getUser = async (userId) => {
+  const response = await myAxios.get(`/users/${userId}`);
+  return response.data;
 };

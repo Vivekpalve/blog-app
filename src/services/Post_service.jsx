@@ -1,65 +1,75 @@
 import { privateAxios } from "./Helper";
 import { myAxios } from "./Helper";
 //create post function
-export const createPost = (postData) => {
+export const createPost = async (postData) => {
   //console.log(postData);
-  return privateAxios
+  const response = await privateAxios
     .post(
       `/user/${postData.userId}/category/${postData.categoryId}/posts`,
       postData
-    )
-    .then((response) => response.data);
+    );
+  return response.data;
 };
 
 //get all post
-export const loadAllPost = (pageNumber, pageSize) => {
-  return myAxios
+export const loadAllPost = async (pageNumber, pageSize) => {
+  const response = await myAxios
     .get(
       `/posts?pageNumber=${pageNumber}&pageSize=${pageSize}&sortBy=addedDate&sortDir=desc`
-    )
-    .then((response) => response.data);
+    );
+  return response.data;
 };
 
 //load single post of given id
 
-export const loadPost = (postId) => {
-  return myAxios.get("/posts/" + postId).then((response) => response.data);
+export const loadPost = async (postId) => {
+  const response = await myAxios.get("/posts/" + postId);
+  return response.data;
 };
 
 //upload post photo
 
-export const uploadPostImage = (image, postId) => {
+export const uploadPostImage = async (image, postId) => {
   let formData = new FormData();
   formData.append("image", image);
-  return privateAxios
+  const response = await privateAxios
     .post(`/post/image/upload/${postId}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-    })
-    .then((response) => response.data);
+    });
+  return response.data;
 };
 
 //get post by categories
 
-export const loadPostCategoryWise = (categoryId) => {
-  return privateAxios
-    .get(`/category/${categoryId}/posts`)
-    .then((response) => response.data);
+export const loadPostCategoryWise = async (categoryId) => {
+  const response = await privateAxios
+    .get(`/category/${categoryId}/posts`);
+  return response.data;
 };
 
 //get post by login user
 
-export const loadPostUserWise = (userId) => {
-  return privateAxios
-    .get(`/user/${userId}/posts`)
-    .then((response) => response.data);
+export const loadPostUserWise = async (userId) => {
+  const response = await privateAxios
+    .get(`/user/${userId}/posts`);
+  return response.data;
 };
 
 //delete post
 
-export const deletePostService = (postId) => {
-  return privateAxios
-    .delete(`/posts/${postId}`)
-    .then((response) => response.data);
+export const deletePostService = async (postId) => {
+  const response = await privateAxios
+    .delete(`/posts/${postId}`);
+  return response.data;
+};
+
+//update post
+
+export const doUpdatePost = async (post, postId) => {
+  console.log(post);
+  const response = await privateAxios
+    .put(`/posts/${postId}`, post);
+  return response.data;
 };
